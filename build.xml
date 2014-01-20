@@ -37,10 +37,20 @@
     </target>
 
     <target name="runTests" depends="compileTests">
-        <java classpath="build/dist/lib/junit-4.10.jar;build/classes/src;build/classes/test"
-              classname="org.junit.runner.JUnitCore">
-            <arg value="sayalija.EvaluatorTest"></arg>
-        </java>
+        <junit haltonfailure="yes">
+
+            <classpath>
+                <pathelement location="build/classes/src" />
+                <pathelement location="build/classes/test" />
+                <pathelement location="build/dist/lib/junit-4.10.jar"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="build/classes/test">
+                    <include name="**/*Test*" />
+                </fileset>
+            </batchtest>
+            <formatter type = "brief" usefile = "false"/>
+        </junit>
 
     </target>
 
