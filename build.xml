@@ -1,0 +1,52 @@
+<project name = "expression-evaluator" default = "createZip" >
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="build"/>
+        <mkdir dir="build/classes"/>
+        <mkdir dir="build/classes/src"/>
+        <mkdir dir="build/classes/test"/>
+    </target>
+
+    <target name="compile"  depends = "init">
+        <javac srcdir="src" destdir="build/classes/src" includeAntRuntime="false"/>
+    </target>
+
+    <target name="createJar" depends="compile,createFolderStructure">
+        <jar destfile="build/dist/lib/evaluator.jar" basedir="build/classes/src"/>
+        <copy file="junit-4.10.jar" tofile="build/dist/lib/junit-4.10.jar"/>
+    </target>
+
+    <target name="createFolderStructure" depends="compile">
+        <mkdir dir="build/dist"/>
+        <mkdir dir="build/dist/lib"/>
+        <mkdir dir="build/dist/bin"/>
+        <mkdir dir="build/dist/docs"/>
+
+        <copy todir="build/dist/bin">
+            <fileset dir="shell-scripts"/>
+        </copy>
+    </target>
+
+    <target name="compileTests" depends="createFolderStructure,createJar">
+        <javac srcdir="test" destdir="build/classes/test"
+               classpath="build/dist/lib/junit-4.10.jar;build/classes/src" includeAntRuntime="false"/>
+    </target>
+
+    <target name="runTests" depends="compileTests">
+        <java classpath="build/dist/lib/junit-4.10.jar;build/classes/src;build/classes/test"
+              classname="org.junit.runner.JUnitCore">
+            <arg value="sayalija.EvaluatorTest"></arg>
+        </java>
+
+    </target>
+
+    <target name="createZip" depends="createJar,createFolderStructure,runTests">
+        <zip destfile="evaluator.zip" basedir="build/dist" update="true"/>
+        <delete dir="build"/>
+    </target>
+
+</project>
