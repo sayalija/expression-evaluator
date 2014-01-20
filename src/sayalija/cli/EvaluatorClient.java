@@ -10,7 +10,7 @@ public class EvaluatorClient {
         }
         String result;
         Evaluator eval = new Evaluator();
-        result = eval.getSimpleExpression(expr);
+        result = eval.evaluate(expr);
         System.out.println(result);
     }
 }
