@@ -1,1 +1,1 @@
-java -cp ${EVALUATE}/lib/evaluator.jar sayalija.Cli "${@}"
+java -cp ${EVALUATE}/lib/evaluator.jar sayalija.cli "${@}"
