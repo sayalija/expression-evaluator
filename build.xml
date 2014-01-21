@@ -29,6 +29,7 @@
         <copy todir="build/dist/bin">
             <fileset dir="shell-scripts"/>
         </copy>
+        <copy file="README.md" tofile="build/dist/docs/README.md"/>
     </target>
 
     <target name="compileTests" depends="createFolderStructure,createJar">
