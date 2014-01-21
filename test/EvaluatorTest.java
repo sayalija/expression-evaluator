@@ -9,17 +9,21 @@ public class EvaluatorTest {
         String actual;
         String expected = "5";
 
-        actual = eval.evaluate("2 + 3");
+        actual = eval.evaluate("2+3");
 
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected, actual);
     }
-    @Test(expected = NumberFormatException.class)
-    public void testGivesExceptionWhenExpressionIsNot() throws Exception {
+
+    @Test
+    public void testGives5WhenExpressionIsAdditionOf2And2And1() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
+        String expected = "5";
 
-        actual = eval.evaluate("+ + 3");
-        System.out.println(actual);
+        actual = eval.evaluate("2+2+1");
+
+        Assert.assertEquals(expected, actual);
     }
 
+    
 }
