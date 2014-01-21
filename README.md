@@ -3,6 +3,21 @@ Expression Evaluator
 
 This evaluator will evaluate expressoin and give result
 
+Installation
+============
+Copy the zip file.
+
+Extract the contents of zip file.
+
+Run build.xml using ant and get evaluator.zip
+
+Set an environment variable EVALUATOR_HOME to evaluator unzipped folder
+
+Append PATH environment variable as %EVALUATOR_HOME%\bin
+
+
+-----------------
+
 RELEASE 0.1
 
   - Operations it can perform are:
