@@ -91,4 +91,25 @@ public class EvaluatorTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testGives4For2Plus3Minus1() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "4";
+
+        actual = eval.evaluate("2 + 3 - 1");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGives11For6Plus3Into2DivideBy3() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "6";
+
+        actual = eval.evaluate("6 + 3 * 2 / 3");
+
+        Assert.assertEquals(expected, actual);
+    }
 }
