@@ -29,7 +29,7 @@
         <copy todir="build/dist/bin">
             <fileset dir="shell-scripts"/>
         </copy>
-        <copy file="README.md" tofile="build/dist/docs/README.md"/>
+        <copy file="README.md" tofile="build/dist/README.md"/>
     </target>
 
     <target name="compileTests" depends="createFolderStructure,createJar">
@@ -56,7 +56,7 @@
     </target>
 
     <target name="createZip" depends="createJar,createFolderStructure,runTests">
-        <zip destfile="evaluator.zip" basedir="build/dist" update="true"/>
+        <zip destfile="evaluator-0.2.zip" basedir="build/dist" update="true"/>
     </target>
 
 </project>
