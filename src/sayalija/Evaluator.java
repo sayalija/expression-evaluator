@@ -1,40 +1,28 @@
 package sayalija;
 
-import java.util.ArrayList;
 import java.lang.String;
 import java.util.Stack;
 
-import static sayalija.Evaluator.calculate;
-
 public class Evaluator {
 
-    public String evaluate1(String expr) {
-        int result = 0;
-        ArrayList<Integer> operands = new ArrayList<Integer>(5);
-        String[] expression = expr.split(" ");
-        for (int i = 0; i < expression.length; i = i + 2) {
-            operands.add(Integer.valueOf(expression[i]));
-        }
-        if (expr.contains("+")) {
-            for (Integer operand : operands) {
-                result = result + operand;
-            }
-        }
-        return String.valueOf(result);
-    }
-
     public String evaluate(String expr) {
-        int result = 0;
-        int num1, num2;
+        double result = 0;
+        double num1, num2;
         char operator;
-        Stack<Integer> operands = new Stack<Integer>();
+        Stack<Double> operands = new Stack<Double>();
         Stack<Character> operators = new Stack<Character>();
+
         String[] expression = expr.split(" ");
-        for (int i = 0; i < expression.length; i = i + 2) {
-            operands.push(Integer.valueOf(expression[i]));
-        }
-        for (int i = 1; i < expression.length; i = i + 2) {
-            operators.push(expression[i].charAt(0));
+        if (expression.length == 1)
+            return expression[0];
+        for (int i = expression.length - 1; i >= 0; i--) {
+            System.out.println(expression[i]);
+            if (true == "+".equals(expression[i]) || true == "-".equals(expression[i]) || true == "*".equals(expression[i])
+                    || true == "/".equals(expression[i]) || true == "^".equals(expression[i])) {
+                operators.push(expression[i].charAt(0));
+            } else {
+                operands.push(Double.valueOf(expression[i]));
+            }
         }
 
         do {
@@ -51,20 +39,19 @@ public class Evaluator {
 
     }
 
-    static int calculate(int num1, int num2, char operator) {
+    static double calculate(double num1, double num2, char operator) {
         switch (operator) {
             case '+':
                 return num2 + num1;
             case '-':
-                return num2 - num1;
+                return num1 - num2;
             case '*':
-                return num2 * num1;
+                return num1 * num2;
             case '/':
-                return num2 / num1;
+                return num1 / num2;
             case '^':
-                return (int) Math.pow(num2,num1);
+                return Math.pow(num1, num2);
         }
         return 0;
     }
-
 }

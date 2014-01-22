@@ -7,7 +7,7 @@ public class EvaluatorTest {
     public void testGives5WhenExpressionIsAdditionOf2And3() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "5";
+            String expected = "5.0";
 
         actual = eval.evaluate("2 + 3");
 
@@ -18,7 +18,7 @@ public class EvaluatorTest {
     public void testGives5WhenExpressionIsAdditionOf2And2And1() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "5";
+        String expected = "5.0";
 
         actual = eval.evaluate("2 + 2 + 1");
 
@@ -29,7 +29,7 @@ public class EvaluatorTest {
     public void testGives7ForAdditionOf2And4And1() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "7";
+        String expected = "7.0";
 
         actual = eval.evaluate("2 + 4 + 1");
 
@@ -40,7 +40,7 @@ public class EvaluatorTest {
     public void testGives14ForAdditionOf10And2And1And1() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "14";
+        String expected = "14.0";
 
         actual = eval.evaluate("10 + 2 + 1 + 1");
 
@@ -51,7 +51,7 @@ public class EvaluatorTest {
     public void testForSubtractionOfTwoNumbers() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "4";
+        String expected = "4.0";
 
         actual = eval.evaluate("6 - 2");
 
@@ -62,7 +62,7 @@ public class EvaluatorTest {
     public void testForMultiplicationOfTwoNumbers() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "24";
+        String expected = "24.0";
 
         actual = eval.evaluate("3 * 8");
 
@@ -73,7 +73,7 @@ public class EvaluatorTest {
     public void testForDivisionOfTwoNumbers() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "4";
+        String expected = "4.0";
 
         actual = eval.evaluate("12 / 3");
 
@@ -84,7 +84,7 @@ public class EvaluatorTest {
     public void testGives64For8PowerOf2() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "64";
+        String expected = "64.0";
 
         actual = eval.evaluate("8 ^ 2");
 
@@ -95,7 +95,7 @@ public class EvaluatorTest {
     public void testGives4For2Plus3Minus1() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "4";
+        String expected = "4.0";
 
         actual = eval.evaluate("2 + 3 - 1");
 
@@ -103,12 +103,34 @@ public class EvaluatorTest {
     }
 
     @Test
-    public void testGives11For6Plus3Into2DivideBy3() throws Exception {
+    public void testGives11For16Plus3DivideBy2() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "6";
+        String expected = "9.5";
 
-        actual = eval.evaluate("6 + 3 * 2 / 3");
+        actual = eval.evaluate("16 + 3 / 2");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGives2500For3Into12Minus20Plus34PowerOf2() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "1296.0";
+
+        actual = eval.evaluate("3 * 12 ^ 2");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGivesExpressionBackWhenItHasOnlyOneOperand() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "12";
+
+        actual = eval.evaluate("12");
 
         Assert.assertEquals(expected, actual);
     }
