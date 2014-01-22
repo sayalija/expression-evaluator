@@ -16,7 +16,6 @@ public class Evaluator {
         if (expression.length == 1)
             return expression[0];
         for (int i = expression.length - 1; i >= 0; i--) {
-            System.out.println(expression[i]);
             if (true == "+".equals(expression[i]) || true == "-".equals(expression[i]) || true == "*".equals(expression[i])
                     || true == "/".equals(expression[i]) || true == "^".equals(expression[i])) {
                 operators.push(expression[i].charAt(0));

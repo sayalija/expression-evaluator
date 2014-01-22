@@ -38,8 +38,26 @@ RELEASE 0.2
         addition
   - Numbers on which it can work are:
 
-        positive MULTIPLE numbers
+        positive numbers
+        multiple numbers
+        not decimal numbers
   - Example
 
         12 + 3 + 2   gives  17
+  - Expression should have space in between every operator and operand
+
+RELEASE 0.3
+
+  - Operations it can perform are:
+
+        addition, subtraction, multiplication, division, power of
+  - Numbers on which it can work are:
+
+        positive, negative numbers
+        not decimal numbers
+  - Example
+
+        12 - 3 * 2   gives  18.0
+        2 ^ 31 gives 2.14748364
+        3 * 12 ^ 2 gives 1296.0
   - Expression should have space in between every operator and operand

@@ -1,4 +1,4 @@
-<project name = "expression-evaluator" default = "createZip" >
+<project name = "expression-evaluator" default = "dist" >
 
     <target name="clean">
         <delete dir="build"/>
@@ -24,7 +24,6 @@
         <mkdir dir="build/dist"/>
         <mkdir dir="build/dist/lib"/>
         <mkdir dir="build/dist/bin"/>
-        <mkdir dir="build/dist/docs"/>
 
         <copy todir="build/dist/bin">
             <fileset dir="shell-scripts"/>
@@ -55,7 +54,7 @@
 
     </target>
 
-    <target name="createZip" depends="createJar,createFolderStructure,runTests">
+    <target name="dist" depends="createJar,createFolderStructure,runTests">
         <zip destfile="evaluator-0.2.zip" basedir="build/dist" update="true"/>
     </target>
 
