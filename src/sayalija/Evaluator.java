@@ -12,19 +12,29 @@ public class Evaluator {
     Stack<Character> operators = new Stack<Character>();
 
     public String evaluate(String expr) {
-        System.out.println("---------"+expr+"-----------");
         String[] expression = expr.split(" ");
         if (expression.length == 1)
             return expression[0];
+        int startIndex = -1;
+        int endIndex = -1;
 
-        if(expr.contains("(") == true && expr.contains(")") == true){
-            int startIndex = expr.indexOf('(');
-            int endIndex = expr.lastIndexOf(')');
-            String res = evaluate(expr.substring(startIndex+2,endIndex-1));
-            res = String.valueOf((int)Double.parseDouble(res));
-            expr = expr.replace("( " + expr.substring(startIndex+2,endIndex-1) + " )",res);
+        if (true == expr.contains("(")) {
+
+            for (int i = 0; i < expr.length(); i++) {
+                if ((expr.charAt(i) == '(')) {
+                    startIndex = i;
+                }
+                if ((expr.charAt(i) == ')')) {
+                    endIndex = i;
+                    break;
+                }
+            }
+            String res = evaluate(expr.substring(startIndex + 2, endIndex - 1));
+            res = String.valueOf((int) Double.parseDouble(res));
+            expr = expr.replace("( " + expr.substring(startIndex + 2, endIndex - 1) + " )", res);
 
             return evaluate(expr);
+
         }
 
         for (int i = expression.length - 1; i >= 0; i--) {
@@ -42,7 +52,7 @@ public class Evaluator {
             num2 = operands.pop();
 
             operands.push(calculate(num1, num2, operator));
-        } ;
+        };
 
         result = operands.pop();
         return String.valueOf(result);
