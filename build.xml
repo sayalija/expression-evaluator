@@ -16,7 +16,7 @@
     </target>
 
     <target name="createJar" depends="compile,createFolderStructure">
-        <jar destfile="build/dist/lib/evaluator.jar" basedir="build/classes/src"/>
+        <jar destfile="build/dist/lib/expression-evaluator.jar" basedir="build/classes/src"/>
         <copy file="junit-4.10.jar" tofile="build/dist/lib/junit-4.10.jar"/>
     </target>
 
@@ -54,7 +54,6 @@
 
     </target>
 
-    
     <target name="dist" depends="createJar,createFolderStructure,runTests">
         <zip destfile="evaluator-0.5.zip" basedir="build/dist" update="true"/>
     </target>
