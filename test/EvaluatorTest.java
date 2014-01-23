@@ -253,7 +253,105 @@ public class EvaluatorTest {
 
         actual = eval.evaluate("10.2 + 2.2 + 1.2 + 1.2");
 
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
+    }
+
+    @Test
+    public void testForSubtractionOfTwoDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "4.1";
+
+        actual = eval.evaluate("6.2 - 2.1");
+
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testForMultiplicationOfTwoDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "26.4";
+
+        actual = eval.evaluate("3.3 * 8");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testForDivisionOfTwoDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "3.875";
+
+        actual = eval.evaluate("12.4 / 3.2");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGivesPowerOfOnTwoDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "67.24";
+
+        actual = eval.evaluate("8.2 ^ 2");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGettingAnswerForAPairOfBracketsInEndingForDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "12.34";
+
+        actual = eval.evaluate("2.1 + ( 3.2 * 3.2 )");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
+    }
+
+    @Test
+    public void testGettingAnswerForAPairOfBracketsInStrtingForDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "16.2";
+
+        actual = eval.evaluate("( 2.2 + 3.2 ) * 3");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
+    }
+    @Test
+    public void testGettingAnswerForExpressionWithNestedBracketsForDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "10.96";
+
+        actual = eval.evaluate("36.2 / ( 2.2 + ( 3.1 * 1 ) - 2 )");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
+    }
+
+    @Test
+    public void testGettingAnswerForExpressionWhenOperandsPresentAfterLastBracketForDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "125.699";
+
+        actual = eval.evaluate("36 / ( 2.3 + ( 3 * 1.3 ) - 2.2 ) ^ 2.2");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
+    }
+
+    @Test
+    public void testGettingAnswerForExpressionWithMultiplePairsOfBracketsForDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "10.99";
+
+        actual = eval.evaluate("36.3 / ( 2.2 + ( 3 * 1.3 ) - 2.3 ) + ( 1.2 ^ 2 )");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
     }
 
 }

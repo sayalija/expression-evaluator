@@ -31,7 +31,7 @@ public class Evaluator {
                 }
             }
             String res = evaluate(expr.substring(startIndex + 2, endIndex - 1));
-            res = String.valueOf((int) Double.parseDouble(res));
+            res = String.valueOf( Double.parseDouble(res));
             expr = expr.replace("( " + expr.substring(startIndex + 2, endIndex - 1) + " )", res);
 
             return evaluate(expr);
@@ -56,7 +56,7 @@ public class Evaluator {
         };
 
         result = operands.pop();
-        return String.valueOf((double) Math.round(result * 100) / 100);
+        return String.valueOf(result);
     }
 
     static double calculate(double num1, double num2, char operator) {
