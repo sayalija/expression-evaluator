@@ -12,6 +12,7 @@ public class Evaluator {
     Stack<Character> operators = new Stack<Character>();
 
     public String evaluate(String expr) {
+        expr = expr.trim();
         String[] expression = expr.split(" ");
         if (expression.length == 1)
             return expression[0];

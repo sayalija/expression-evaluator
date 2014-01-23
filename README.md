@@ -18,6 +18,16 @@ Append PATH environment variable as %EVALUATOR_HOME%\bin
 
 -----------------
 
+#RELEASE 0.5
+  - This release will support
+
+        brackets in expression
+
+  - Example
+
+        36 / ( 2 + ( 3 * 1 ) - 2 ) + ( 1 ^ 2 )   gives  13.0
+        36 / ( 2 + ( 3 * 1 ) - 2 ) gives 12.0
+  - Input
 #RELEASE 0.4
   - This release will support
 
