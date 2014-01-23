@@ -18,20 +18,24 @@ Append PATH environment variable as %EVALUATOR_HOME%\bin
 
 -----------------
 
-RELEASE 0.1
+#RELEASE 0.3
 
   - Operations it can perform are:
 
-        addition
+        addition, subtraction, multiplication, division, power of
   - Numbers on which it can work are:
 
-        only 2 positive numbers
+        positive/ negative, whole numbers
+        non decimal numbers
   - Example
 
-        2 + 3   gives  5
+        12 - 3 * 2   gives  18.0
+        2 ^ 31 gives 2.14748364
+        3 * 12 ^ 2 gives 1296.0
   - Expression should have space in between every operator and operand
 
-RELEASE 0.2
+
+#RELEASE 0.2
 
   - Operations it can perform are:
 
@@ -46,18 +50,15 @@ RELEASE 0.2
         12 + 3 + 2   gives  17
   - Expression should have space in between every operator and operand
 
-RELEASE 0.3
+#RELEASE 0.1
 
   - Operations it can perform are:
 
-        addition, subtraction, multiplication, division, power of
+        addition
   - Numbers on which it can work are:
 
-        positive, negative numbers
-        not decimal numbers
+        only 2 positive numbers
   - Example
 
-        12 - 3 * 2   gives  18.0
-        2 ^ 31 gives 2.14748364
-        3 * 12 ^ 2 gives 1296.0
+        2 + 3   gives  5
   - Expression should have space in between every operator and operand
