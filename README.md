@@ -27,6 +27,8 @@ Append PATH environment variable as %EVALUATOR_HOME%\bin
 
         positive/ negative, whole numbers
         non decimal numbers
+  - Result:
+        result will be display in decimal value
   - Example
 
         12 - 3 * 2   gives  18.0
