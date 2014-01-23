@@ -189,5 +189,15 @@ public class EvaluatorTest {
 
         Assert.assertEquals(expected, actual);
     }
-   
+    @Test
+    public void testGettingAnswerForExpressionWithNestedBrackets() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "6.0";
+
+        actual = eval.evaluate("36 / ( 2 + ( 3 + 1 ) )");
+
+        Assert.assertEquals(expected, actual);
+    }
+
 }

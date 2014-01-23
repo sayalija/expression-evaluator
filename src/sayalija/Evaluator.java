@@ -12,14 +12,14 @@ public class Evaluator {
     Stack<Character> operators = new Stack<Character>();
 
     public String evaluate(String expr) {
-
+        System.out.println("---------"+expr+"-----------");
         String[] expression = expr.split(" ");
         if (expression.length == 1)
             return expression[0];
 
         if(expr.contains("(") == true && expr.contains(")") == true){
             int startIndex = expr.indexOf('(');
-            int endIndex = expr.indexOf(')');
+            int endIndex = expr.lastIndexOf(')');
             String res = evaluate(expr.substring(startIndex+2,endIndex-1));
             res = String.valueOf((int)Double.parseDouble(res));
             expr = expr.replace("( " + expr.substring(startIndex+2,endIndex-1) + " )",res);
