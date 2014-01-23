@@ -234,4 +234,26 @@ public class EvaluatorTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testgivesAnswerForTwoDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "2.3";
+
+        actual = eval.evaluate("1.1 + 1.2");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGivesForAdditionOfMultipleDecimalNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "14.8";
+
+        actual = eval.evaluate("10.2 + 2.2 + 1.2 + 1.2");
+
+        Assert.assertEquals(expected, actual);
+    }
+
 }

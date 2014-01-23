@@ -56,7 +56,7 @@ public class Evaluator {
         };
 
         result = operands.pop();
-        return String.valueOf(result);
+        return String.valueOf((double) Math.round(result * 100) / 100);
     }
 
     static double calculate(double num1, double num2, char operator) {
