@@ -18,6 +18,19 @@ Append PATH environment variable as %EVALUATOR_HOME%\bin
 
 -----------------
 
+#RELEASE 0.4
+  - This release will support
+
+        a pair if brackets
+  - Result:
+
+        result will be display in decimal value
+  - Example
+
+        12 - ( 3 * 2 )   gives  18.0
+        ( 2 ^ 2) + 4 gives 8.0
+  - Expression should have space in between every operator and operand and bracket
+
 #RELEASE 0.3
 
   - Operations it can perform are:
@@ -34,7 +47,6 @@ Append PATH environment variable as %EVALUATOR_HOME%\bin
         12 - 3 * 2   gives  18.0
         2 ^ 31 gives 2.14748364
         3 * 12 ^ 2 gives 1296.0
-  - Expression should have space in between every operator and operand
 
 
 #RELEASE 0.2
@@ -46,11 +58,10 @@ Append PATH environment variable as %EVALUATOR_HOME%\bin
 
         positive numbers
         multiple numbers
-        not decimal numbers
+        non decimal numbers
   - Example
 
         12 + 3 + 2   gives  17
-  - Expression should have space in between every operator and operand
 
 #RELEASE 0.1
 
