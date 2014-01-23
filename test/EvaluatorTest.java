@@ -178,4 +178,16 @@ public class EvaluatorTest {
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testGettingAnswerForAPairOfBracketsWithPowerOfOperatorAndNegativeNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "-7.5";
+
+        actual = eval.evaluate("-20 / ( 2 ^ 3 ) * 3");
+
+        Assert.assertEquals(expected, actual);
+    }
+   
 }
