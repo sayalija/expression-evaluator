@@ -1,1 +1,1 @@
-java -cp ${EVALUATOR_HOME}/lib/evaluator.jar sayalija.cli.EvaluatorClient "${@}"
+java -cp ${EVALUATOR_HOME}/lib/expression-evaluator.jar sayalija.cli.EvaluatorClient "${@}"
