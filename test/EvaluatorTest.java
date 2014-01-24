@@ -2,6 +2,8 @@ import junit.framework.Assert;
 import org.junit.Test;
 import sayalija.Evaluator;
 
+import java.util.EmptyStackException;
+
 public class EvaluatorTest {
     @Test
     public void testGives5WhenExpressionIsAdditionOf2And3() throws Exception {
@@ -125,67 +127,56 @@ public class EvaluatorTest {
     }
 
     @Test
-    public void testGivesExpressionBackWhenItHasOnlyOneOperand() throws Exception {
+    public void testGettingAnswerForAPairOfBracketsInEnding() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "12";
+        String expected = "11.0";
 
-        actual = eval.evaluate("12");
+        actual = eval.evaluate("2 + ( 3 * 3 )");
 
         Assert.assertEquals(expected, actual);
     }
 
-//    @Test
-//    public void testGettingAnswerForAPairOfBracketsInEnding() throws Exception {
-//        Evaluator eval = new Evaluator();
-//        String actual;
-//        String expected = "11.0";
-//
-//        actual = eval.evaluate("2 + ( 3 * 3 )");
-//
-//        Assert.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void testGettingAnswerForAPairOfBracketsInStrting() throws Exception {
-//        Evaluator eval = new Evaluator();
-//        String actual;
-//        String expected = "15.0";
-//
-//        actual = eval.evaluate("( 2 + 3 ) * 3");
-//
-//        Assert.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void testGettingAnswerForAPairOfBrackets() throws Exception {
-//        Evaluator eval = new Evaluator();
-//        String actual;
-//        String expected = "12.0";
-//
-//        actual = eval.evaluate("20 / ( 2 + 3 ) * 3");
-//
-//        Assert.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void testGettingAnswerForAPairOfBracketsWithPowerOfOperator() throws Exception {
-//        Evaluator eval = new Evaluator();
-//        String actual;
-//        String expected = "7.5";
-//
-//        actual = eval.evaluate("20 / ( 2 ^ 3 ) * 3");
-//
-//        Assert.assertEquals(expected, actual);
-//    }
-//
+    @Test
+    public void testGettingAnswerForAPairOfBracketsInStrting() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "15.0";
+
+        actual = eval.evaluate("( 2 + 3 ) * 3");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGettingAnswerForAPairOfBrackets() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "12.0";
+
+        actual = eval.evaluate("20 / ( 2 + 3 ) * 3");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGettingAnswerForAPairOfBracketsWithPowerOfOperator() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "7.5";
+
+        actual = eval.evaluate("20 / ( 2 ^ 3 ) * 3");
+
+        Assert.assertEquals(expected, actual);
+    }
+
     @Test
     public void testGettingAnswerForAPairOfBracketsWithPowerOfOperatorAndNegativeNumbers() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "-7.5";
+        String expected = "-3.0";
 
-        actual = eval.evaluate("-20 / ( 2 ^ 3 ) * 3");
+        actual = eval.evaluate("-5+2");
 
         Assert.assertEquals(expected, actual);
     }
@@ -354,7 +345,6 @@ public class EvaluatorTest {
         Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
     }
 
-
     @Test
     public void testGivesAnswerWithoutSpaces() throws Exception {
         Evaluator eval = new Evaluator();
@@ -365,6 +355,7 @@ public class EvaluatorTest {
 
         Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
     }
+
     @Test
     public void testForDivisionOfTwoDecimalNumbersWithoutSpaces() throws Exception {
         Evaluator eval = new Evaluator();
@@ -375,6 +366,7 @@ public class EvaluatorTest {
 
         Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void testGettingAnswerForExpressionWithoutSpaces() throws Exception {
         Evaluator eval = new Evaluator();
@@ -385,4 +377,40 @@ public class EvaluatorTest {
 
         Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
     }
+
+    @Test(expected = EmptyStackException.class)
+    public void testThrowsExceptionForWrongInput() throws Exception {
+        Evaluator eval = new Evaluator();
+        eval.evaluate("4+");
+    }
+
+    @Test
+    public void testGettingAnswerForSubtractionOfTwoNumbers() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "-1";
+
+        actual = eval.evaluate(" 2-3");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual), 1);
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testShouldThrowsAnExceptionForCharacterInput() throws Exception {
+        Evaluator eval = new Evaluator();
+
+        eval.evaluate("abc");
+    }
+
+    @Test
+    public void testGettingAnswerForSubtractionOfMinus1AndMinus1() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "-2";
+
+        actual = eval.evaluate("-1-1");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual), 1);
+    }
+
 }

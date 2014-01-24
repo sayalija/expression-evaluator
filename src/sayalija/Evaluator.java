@@ -12,14 +12,20 @@ public class Evaluator {
     Stack<Character> operators = new Stack<Character>();
     String getAppropriateString(String expr){
         expr = expr.trim();
-        expr = expr.replaceAll(" *\\( *"," ( ").replaceAll(" *\\) *"," ) ").replaceAll(" *\\+ *"," + ").replaceAll(" *\\* *"," * ").replaceAll(" *\\/ *"," / ").replaceAll(" *\\^ *"," ^ ");
+        expr = expr.replaceAll(" *\\( *"," ( ").
+                replaceAll(" *\\) *"," ) ").
+                replaceAll(" *\\+ *"," + ").
+                replaceAll(" *\\* *"," * ").
+                replaceAll(" *\\/ *"," / ").
+                replaceAll(" *\\^ *"," ^ ").
+                replaceAll(" *\\- *"," - ").
+                replaceAll("  - "," - ").
+                replaceAll("^ - ","-");
         return expr;
     }
     public String evaluate(String expr) {
         expr = getAppropriateString(expr);
         String[] expression = expr.split(" ");
-        if (expression.length == 1)
-            return expression[0];
         int startIndex = -1;
         int endIndex = -1;
 
