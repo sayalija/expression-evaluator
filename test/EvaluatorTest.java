@@ -312,6 +312,7 @@ public class EvaluatorTest {
 
         Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual),1);
     }
+
     @Test
     public void testGettingAnswerForExpressionWithNestedBracketsForDecimalNumbers() throws Exception {
         Evaluator eval = new Evaluator();
@@ -406,11 +407,32 @@ public class EvaluatorTest {
     public void testGettingAnswerForSubtractionOfMinus1AndMinus1() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "-2";
+        String expected = "21";
 
-        actual = eval.evaluate("-1-1");
+        actual = eval.evaluate("23+(-2)");
 
         Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual), 1);
     }
 
+    @Test
+    public void testGivesNaNFor0DevideBy0() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "NaN";
+
+        actual = eval.evaluate("0/0");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual), 1);
+    }
+
+    @Test
+    public void testGivesInfinityFor0DevideBy0() throws Exception {
+        Evaluator eval = new Evaluator();
+        String actual;
+        String expected = "Infinity";
+
+        actual = eval.evaluate("3.3/0");
+
+        Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual), 1);
+    }
 }

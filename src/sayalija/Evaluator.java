@@ -10,27 +10,35 @@ public class Evaluator {
     char operator;
     Stack<Double> operands = new Stack<Double>();
     Stack<Character> operators = new Stack<Character>();
+
     String getAppropriateString(String expr){
         expr = expr.trim();
         expr = expr.replaceAll(" *\\( *"," ( ").
-                replaceAll(" *\\) *"," ) ").
+                replaceAll(" *\\) *", " ) ").
                 replaceAll(" *\\+ *"," + ").
                 replaceAll(" *\\* *"," * ").
                 replaceAll(" *\\/ *"," / ").
                 replaceAll(" *\\^ *"," ^ ").
                 replaceAll(" *\\- *"," - ").
                 replaceAll("  - "," - ").
-                replaceAll("^ - ","-");
+                replaceAll("\\(", "( ").
+                replaceAll("\\)", " )").
+                replaceAll("^ - ", "-");
         return expr;
     }
+
     public String evaluate(String expr) {
         expr = getAppropriateString(expr);
+        return startEvaluation(expr);
+    }
+
+    private String startEvaluation(String expr) {
+        expr = expr.trim();
         String[] expression = expr.split(" ");
         int startIndex = -1;
         int endIndex = -1;
 
         if (true == expr.contains("(")) {
-
             for (int i = 0; i < expr.length(); i++) {
                 if ((expr.charAt(i) == '(')) {
                     startIndex = i;
@@ -44,7 +52,7 @@ public class Evaluator {
             res = String.valueOf( Double.parseDouble(res));
             expr = expr.replace("( " + expr.substring(startIndex + 2, endIndex - 1) + " )", res);
 
-            return evaluate(expr);
+            return startEvaluation(expr);
 
         }
 
@@ -63,7 +71,8 @@ public class Evaluator {
             num2 = operands.pop();
 
             operands.push(calculate(num1, num2, operator));
-        };
+        }
+        ;
 
         result = operands.pop();
         return String.valueOf(result);
