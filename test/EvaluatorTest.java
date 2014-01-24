@@ -429,9 +429,9 @@ public class EvaluatorTest {
     public void testGivesInfinityFor0DevideBy0() throws Exception {
         Evaluator eval = new Evaluator();
         String actual;
-        String expected = "Infinity";
+        String expected = "-1.0";
 
-        actual = eval.evaluate("3.3/0");
+        actual = eval.evaluate("2+-3");
 
         Assert.assertEquals(Double.parseDouble(expected), Double.parseDouble(actual), 1);
     }

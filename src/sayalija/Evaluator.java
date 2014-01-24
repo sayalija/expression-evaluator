@@ -11,21 +11,17 @@ public class Evaluator {
     Stack<Double> operands = new Stack<Double>();
     Stack<Character> operators = new Stack<Character>();
 
-    String getAppropriateString(String expr){
-        expr = expr.trim();
-        expr = expr.replaceAll(" *\\( *"," ( ").
-                replaceAll(" *\\) *", " ) ").
-                replaceAll(" *\\+ *"," + ").
-                replaceAll(" *\\* *"," * ").
-                replaceAll(" *\\/ *"," / ").
-                replaceAll(" *\\^ *"," ^ ").
-                replaceAll(" *\\- *"," - ").
-                replaceAll("  - "," - ").
-                replaceAll("\\(", "( ").
-                replaceAll("\\)", " )").
-                replaceAll(" *\\- - * ", " + ").
-                replaceAll("^ - ", "-");
-        return expr;
+    String getAppropriateString(String expr) {
+        expr = expr.replaceAll(" +", "");
+        return expr.replaceAll("\\+", " + ")
+                .replaceAll("\\-", " - ")
+                .replaceAll("\\*", " * ")
+                .replaceAll("\\/", " / ")
+                .replaceAll("\\^", " ^ ")
+                .replaceAll("\\(", "( ")
+                .replaceAll("\\)", " )")
+                .replaceAll("  - ", " -")
+                .replaceFirst("^ - ", "-");
     }
 
     public String evaluate(String expr) {
@@ -50,7 +46,7 @@ public class Evaluator {
                 }
             }
             String res = evaluate(expr.substring(startIndex + 2, endIndex - 1));
-            res = String.valueOf( Double.parseDouble(res));
+            res = String.valueOf(Double.parseDouble(res));
             expr = expr.replace("( " + expr.substring(startIndex + 2, endIndex - 1) + " )", res);
 
             return startEvaluation(expr);
@@ -72,7 +68,8 @@ public class Evaluator {
             num2 = operands.pop();
 
             operands.push(calculate(num1, num2, operator));
-        };
+        }
+        ;
 
         result = operands.pop();
         return String.valueOf(result);
