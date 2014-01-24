@@ -23,6 +23,7 @@ public class Evaluator {
                 replaceAll("  - "," - ").
                 replaceAll("\\(", "( ").
                 replaceAll("\\)", " )").
+                replaceAll(" *\\- - * ", " + ").
                 replaceAll("^ - ", "-");
         return expr;
     }
@@ -71,8 +72,7 @@ public class Evaluator {
             num2 = operands.pop();
 
             operands.push(calculate(num1, num2, operator));
-        }
-        ;
+        };
 
         result = operands.pop();
         return String.valueOf(result);
