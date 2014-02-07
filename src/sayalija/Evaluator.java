@@ -3,7 +3,7 @@ package sayalija;
 import java.lang.String;
 import java.util.Stack;
 
-public class Evaluator {
+public class Evaluator extends Operator {
 
     double result = 0;
     double num1, num2;
@@ -75,19 +75,4 @@ public class Evaluator {
         return String.valueOf(result);
     }
 
-    static double calculate(double num1, double num2, char operator) {
-        switch (operator) {
-            case '+':
-                return num2 + num1;
-            case '-':
-                return num1 - num2;
-            case '*':
-                return num1 * num2;
-            case '/':
-                return num1 / num2;
-            case '^':
-                return Math.pow(num1, num2);
-        }
-        return 0;
-    }
 }
